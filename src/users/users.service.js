@@ -40,7 +40,7 @@ async function updateOne(id, newData) {
 }
 
 async function generateJwt(user) {
-  return jwt.sign({ sub: user._id, role: user.role }, process.env.JWT_SECRET);
+  return jwt.sign({ sub: user._id, role: user.role }, "BigCoumbi03");
 }
 
 async function deleteOne(id) {

@@ -24,7 +24,7 @@ app.use("/users", usersController);
 app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 
 async function main() {
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect("mongodb+srv://dembi311:BigCoumbi03@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
   console.log("Connected to Mongo Database");
   app.listen(port, () => {
     console.log(

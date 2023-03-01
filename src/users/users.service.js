@@ -1,14 +1,22 @@
 const User = require("./users.model");
 const { NotFoundError } = require("../custom-errors/not-found.error");
 const jwt = require("jsonwebtoken");
+const { DuplicateError } = require("../custom-errors/duplicate.error");
 
 async function createOne(userData) {
-  // Override/force `role` property
-  const saneData = { ...userData, role: "user" };
-  const user = new User(saneData);
-  await user.save();
-  // Return standardized user format given by findOne function
-  return await findOne(user.id);
+  try {
+    // Override/force `role` property
+    const saneData = { ...userData, role: "user" };
+    const user = new User(saneData);
+    await user.save();
+    // Return standardized user format given by findOne function
+    return await findOne(user.id);
+  } catch (e) {
+    if (e.code === 11000) {
+      throw new DuplicateError("Username already taken.");
+    }
+    throw e;
+  }
 }
 
 async function findOne(id) {
@@ -40,7 +48,7 @@ async function updateOne(id, newData) {
 }
 
 async function generateJwt(user) {
-  return jwt.sign({ sub: user._id, role: user.role }, "secret");
+  return jwt.sign({ sub: user._id, role: user.role }, process.env.JWT_SECRET);
 }
 
 async function deleteOne(id) {

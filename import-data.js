@@ -1,3 +1,5 @@
+Import-data.js
+
 const mongoose = require("mongoose");
 require("dotenv").config({path: './'});
 
@@ -23,15 +25,16 @@ function buildLocation(location) {
 
 async function importBulkFilmingLocations() {
   const locationsArray = filmingLocations.map((location) =>
-    buildLocation(location)
+      buildLocation(location)
   );
   await Location.insertMany(locationsArray);
 }
 async function main() {
-  await mongoose.connect("mongodb+srv://dembi311:BigCoumbi03@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
+  await mongoose.connect("mongodb+srv://http://localhost:6000/");
   console.log("Import script connected to database, starting import.");
   await importBulkFilmingLocations();
   console.log("Finished importing.");
 }
 
 main();
+

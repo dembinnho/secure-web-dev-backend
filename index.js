@@ -1,3 +1,5 @@
+index.js
+
 require("dotenv").config();
 const express = require("express");
 const locationsController = require("./src/locations/locations.controller");
@@ -17,22 +19,23 @@ app.use(cors("*"));
 
 // Protect all /locations route with JWT Authentication
 app.use(
-  "/locations",
-  passport.authenticate("jwt", { session: false }),
-  locationsController
+    "/locations",
+    passport.authenticate("jwt", { session: false }),
+    locationsController
 );
 app.use("/users", usersController);
 
 app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 
 async function main() {
-  await mongoose.connect("mongodb+srv://dembi311:BigCoumbi03@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
+  await mongoose.connect("mongodb://127.0.0.1:6000/");
   console.log("Connected to Mongo Database");
   app.listen(port, () => {
     console.log(
-      `API listening on port ${port}, visit http://localhost:${port}/`
+        `API listening on port ${port}, visit http://localhost:${port}/`
     );
   });
 }
 
 main();
+

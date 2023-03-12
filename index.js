@@ -1,4 +1,3 @@
-index.js
 
 require("dotenv").config();
 const express = require("express");
@@ -28,7 +27,12 @@ app.use("/users", usersController);
 app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:6000/");
+  //await mongoose.connect("mongodb://172.22.0.2/16");
+  //await mongoose.connect("mongodb://172.22.0.2/16");
+
+  await mongoose.connect("mongodb://127.0.0.1:27017/");
+  //await mongoose.connect("mongodb+srv://admin:admin311@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
+
   console.log("Connected to Mongo Database");
   app.listen(port, () => {
     console.log(

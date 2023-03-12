@@ -30,7 +30,7 @@ async function importBulkFilmingLocations() {
   await Location.insertMany(locationsArray);
 }
 async function main() {
-  await mongoose.connect("mongodb+srv://http://localhost:6000/");
+  await mongoose.connect("mongodb://127.0.0.1:6000/");
   console.log("Import script connected to database, starting import.");
   await importBulkFilmingLocations();
   console.log("Finished importing.");

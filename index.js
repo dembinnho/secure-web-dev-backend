@@ -29,9 +29,11 @@ app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 async function main() {
   //await mongoose.connect("mongodb://172.22.0.2/16");
   //await mongoose.connect("mongodb://172.22.0.2/16");
-
-  await mongoose.connect("mongodb://127.0.0.1:27017/");
-  //await mongoose.connect("mongodb+srv://admin:admin311@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
+//72.30.0.4/16
+  //await mongoose.connect("mongodb://127.0.0.1:27017/");
+  //await mongoose.connect("mongodb://compose_mongodb_1");
+  await mongoose.connect("mongodb://compose_database_1");
+// await mongoose.connect("mongodb+srv://admin:admin311@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
 
   console.log("Connected to Mongo Database");
   app.listen(port, () => {

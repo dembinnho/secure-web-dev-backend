@@ -2,7 +2,7 @@
 
 This repo contains an Express app, it will be the backend used for the semester.
 
-## 👷 Prerequisites
+## 👷 Prerequisites to run it locally
 
 1. Fork this repository then clone it on your computer
 2. Install Insomnia (or your API Testing tool of choice) and import the collection provided in [insomnia-collection.json](insomnia-collection.json)
@@ -19,6 +19,9 @@ This repo contains an Express app, it will be the backend used for the semester.
    3. Run the import script with `npm run import`
 8. Run the backend `npm start`
 
+## Run it with Docker
+1. Download the front via this url: "https://github.com/dembinnho/FrontEnd/tree/cloudComputing"
+2. Follow the readme of the front
 ## Quick information
 
 This backend connects to a MongoDB Database containing locations of film sets in Paris, France.

@@ -28,8 +28,6 @@ async function importBulkFilmingLocations() {
   await Location.insertMany(locationsArray);
 }
 async function main() {
- // await mongoose.connect("mongodb+srv://admin:admin311@cluster0.xifjfyo.mongodb.net/?retryWrites=true&w=majority");
- // await mongoose.connect("mongodb://compose_mongodb_1");
   await mongoose.connect("mongodb://compose_database_1");
   console.log("Import script connected to database, starting import.");
   await importBulkFilmingLocations();
